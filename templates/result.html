@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Result for Image {{ image_index + 1 }}</h2>
+
+<h3>Predefined Image</h3>
+<img src="{{ url_for('static', filename='uploads/' + predefined_image.split('/')[-1]) }}" alt="Predefined Image" style="width: 300px;">
+
+<h3>Your Uploaded Image</h3>
+<img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" alt="Uploaded Image" style="width: 300px;">
+
+<h3>Score</h3>
+<p>Your score is {{ score }}/100</p>
+
+<a href="{{ url_for('home') }}">Back to Home</a>
+{% endblock %}

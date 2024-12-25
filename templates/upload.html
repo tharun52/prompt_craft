@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Upload Image for Image {{ image_index + 1 }}</h2>
+<form action="" method="post" enctype="multipart/form-data">
+    <label for="image">Select Image to Upload:</label>
+    <input type="file" name="image" required>
+    <button type="submit">Upload and Compare</button>
+</form>
+<a href="{{ url_for('home') }}">Back to Home</a>
+
+<h3>Predefined Image</h3>
+<img src="{{ url_for('static', filename='uploads/' + PREDEFINED_IMAGES[image_index].split('/')[-1]) }}" alt="Predefined Image" style="width: 300px;">
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Home</h2>
+<p>Average Score: {{ average_score }}</p>
+<ul>
+    {% for i in range(scores|length) %}
+    <li>
+        Image {{ i + 1 }} - Highest Score: {{ scores[i].highest_score }}/100
+        <a href="{{ url_for('upload', image_index=i) }}">Try to Match</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
