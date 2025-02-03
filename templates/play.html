@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="text-center mb-4">
+    <h2 class="text-primary animate__animated animate__fadeInDown">Generate an AI Image Similar to This Prompt</h2>
+</div>
+<div class="row justify-content-center mb-4">
+    <div class="col-md-8">
+        <img src="{{ original_image }}" alt="Original Prompt Image" 
+             class="img-fluid rounded animate__animated animate__fadeIn" 
+             style="max-height: 400px; object-fit: contain; display: block; margin: 0 auto;">
+    </div>
+</div>
+<form action="" method="post" enctype="multipart/form-data" class="w-50 mx-auto animate__animated animate__fadeInUp">
+    <div class="mb-3">
+        <label for="uploaded_image" class="form-label">Upload your generated image:</label>
+        <input type="file" class="form-control" name="uploaded_image" id="uploaded_image" accept="image/*" required>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+{% endblock %}

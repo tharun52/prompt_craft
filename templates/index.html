@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Prompt Images -->
+<div class="row">
+    {% for image in images %}
+    <div class="col-md-4 mb-3">
+        <div class="card animate__animated animate__zoomIn">
+            <a href="{{ url_for('play', image_id=image.id) }}">
+                <img src="{{ url_for('static', filename='images/' ~ image.filename) }}" 
+                     class="card-img-top img-thumbnail" 
+                     style="height: 250px; object-fit: cover;" 
+                     alt="Prompt Image {{ image.id }}">
+            </a>
+            <div class="card-body text-center">
+                <h5 class="card-title">Image {{ image.id }}</h5>
+                {% if scores[image.id] is defined %}
+                    <p class="card-text">Score: {{ scores[image.id] | round(2) }} / 100</p>
+                {% else %}
+                    <p class="card-text">Score: -- / 100</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="d-flex align-items-center justify-content-center mt-4 p-3" 
+     style="background-color: #1D359F; border-radius: 10px; color: white;">
+    <h5 class="mb-0 me-3">For AI image generation model, click here:</h5>
+    <a href="https://www.craiyon.com/" target="_blank" 
+       class="btn btn-light animate__animated">
+       AI Generator
+    </a>
+</div>
+
+
+<!-- Simple Rules Section -->
+<div class="card mb-4 shadow-sm animate__animated animate__fadeInUp">
+    <div class="card-body">
+        <h5 class="card-title text-primary" style="font-size: 1.5rem; font-weight: bold;">How to Play</h5>
+        <ul class="list-unstyled" style="font-size: 1.2rem; line-height: 1.6;">
+            <li><strong>Select a Prompt:</strong> Click one of the three images.</li>
+            <li><strong>Create & Upload:</strong> Generate an AI image similar to the prompt and upload it.</li>
+            <li><strong>Score:</strong> Your image is compared and given a score out of 100.</li>
+            <li><strong>Average Score:</strong> Once all three are submitted, your average is calculated.</li>
+            <li><strong>Have Fun:</strong> Be creative and enjoy the challenge!</li>
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}

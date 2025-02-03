@@ -1,16 +1,24 @@
-{% extends "layout.html" %}
-
+{% extends "base.html" %}
 {% block content %}
-<h2>Result for Image {{ image_index + 1 }}</h2>
-
-<h3>Predefined Image</h3>
-<img src="{{ url_for('static', filename='uploads/' + predefined_image.split('/')[-1]) }}" alt="Predefined Image" style="width: 300px;">
-
-<h3>Your Uploaded Image</h3>
-<img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" alt="Uploaded Image" style="width: 300px;">
-
-<h3>Score</h3>
-<p>Your score is {{ score }}/100</p>
-
-<a href="{{ url_for('home') }}">Back to Home</a>
+<div class="text-center mb-4">
+    <h2 class="text-primary animate__animated animate__fadeInDown">Comparison Result</h2>
+</div>
+<div class="row">
+    <div class="col-md-6 text-center animate__animated animate__fadeInLeft">
+        <h4>Prompt Image</h4>
+        <img src="{{ original_image }}" alt="Original Image" 
+             class="img-fluid rounded" 
+             style="height: 300px; object-fit: cover;">
+    </div>
+    <div class="col-md-6 text-center animate__animated animate__fadeInRight">
+        <h4>Your Image</h4>
+        <img src="{{ uploaded_image }}" alt="Uploaded Image" 
+             class="img-fluid rounded" 
+             style="height: 300px; object-fit: cover;">
+    </div>
+</div>
+<div class="text-center mt-4 animate__animated animate__bounceIn">
+    <h3 class="text-primary">Your Similarity Score: {{ score | round(2) }} / 100</h3>
+    <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Back to Home</a>
+</div>
 {% endblock %}
