@@ -4,15 +4,15 @@
 <!-- Prompt Images -->
 <div class="row">
     {% for image in images %}
-    <div class="col-md-4 mb-3">
-        <div class="card animate__animated animate__zoomIn">
-            <a href="{{ url_for('play', image_id=image.id) }}">
+    <div class="col-md-4 mb-3 d-flex justify-content-center">
+        <div class="card animate__animated animate__zoomIn" style="width: 250px; height: 350px; display: flex; flex-direction: column; align-items: center;">
+            <a href="{{ url_for('play', image_id=image.id) }}" style="display: flex; justify-content: center;">
                 <img src="{{ url_for('static', filename='images/' ~ image.filename) }}" 
                      class="card-img-top img-thumbnail" 
-                     style="height: 250px; object-fit: cover;" 
+                     style="width: 100%; height: 250px; object-fit: cover;" 
                      alt="Prompt Image {{ image.id }}">
             </a>
-            <div class="card-body text-center">
+            <div class="card-body text-center" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
                 <h5 class="card-title">Image {{ image.id }}</h5>
                 {% if scores[image.id] is defined %}
                     <p class="card-text">Score: {{ scores[image.id] | round(2) }} / 100</p>
@@ -28,12 +28,11 @@
 <div class="d-flex align-items-center justify-content-center mt-4 p-3" 
      style="background-color: #1D359F; border-radius: 10px; color: white;">
     <h5 class="mb-0 me-3">For AI image generation model, click here:</h5>
-    <a href="https://www.craiyon.com/" target="_blank" 
+    <a href="https://deepai.org/machine-learning-model/text2img" target="_blank" 
        class="btn btn-light animate__animated">
        AI Generator
     </a>
 </div>
-
 
 <!-- Simple Rules Section -->
 <div class="card mb-4 shadow-sm animate__animated animate__fadeInUp">
@@ -48,6 +47,5 @@
         </ul>
     </div>
 </div>
-
 
 {% endblock %}

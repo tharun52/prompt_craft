@@ -65,9 +65,9 @@ def index():
       - The navbar shows the average score only if all three have been scored.
     """
     images = [
-        {'id': '1', 'filename': 'image1.png'},
-        {'id': '2', 'filename': 'image2.png'},
-        {'id': '3', 'filename': 'image3.png'}
+        {'id': '1', 'filename': 'image1.jpg'},
+        {'id': '2', 'filename': 'image2.jpg'},
+        {'id': '3', 'filename': 'image3.jpg'}
     ]
     scores = session.get('scores', {})
     average_score = None
@@ -79,9 +79,9 @@ def index():
 @app.route('/play/<image_id>', methods=['GET', 'POST'])
 def play(image_id):
     mapping = {
-        '1': 'image1.png',
-        '2': 'image2.png',
-        '3': 'image3.png'
+        '1': 'image1.jpg',
+        '2': 'image2.jpg',
+        '3': 'image3.jpg'
     }
     if image_id not in mapping:
         flash("Invalid image selected.")
